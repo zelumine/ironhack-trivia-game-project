@@ -13,6 +13,16 @@ const questionNum = document.querySelector("#question-number");
 let scoreDisplay = document.querySelector("#score");
 let containerDiv = document.querySelector("#container");
 
+const themeBtns = document.querySelectorAll(".theme-btn");
+const difficultyBtns = document.querySelectorAll(".difficulty");
+let chosenTheme, chosenDifficulty;
+
+themeBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    console.log(btn);
+  })
+})
+
 
 // Get request
 const getOpenTriviaInfo = () => {
