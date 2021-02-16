@@ -36,3 +36,15 @@ hr {
 .theme-box a {
   text-decoration: none;
 }
+
+button.theme-btn {
+  width: 200px;
+  height: 50px;
+  margin: 5px calc(35% / 2);
+}
+
+button.difficulty {
+  width: 80px;
+  height: 40px;
+  margin: 5px 10px;
+}
