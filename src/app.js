@@ -4,8 +4,9 @@ let questionsArr = [];
 let extractedQuestions;
 let arrIndex = 0;
 let score = 0;
-let time = 5;
-let answerBtnClicked = false;
+let time = 30;
+let secondsInterval;
+let displayQuestions;
 
 // DOM on quiz page
 const answerBtns = document.querySelectorAll(".answer-btn");
@@ -117,43 +118,56 @@ const displayAnswers = arr => {
 }
 
 const getNextQuestion = arr => {
-  answerBtnClicked = false;
-
   answerBtns.forEach(btn => btn.setAttribute("data-correct", ""));
 
   setTimeout(() => {
     arrIndex++;
     displayInfo(arr[arrIndex]);
     displayAnswers(arr[arrIndex]);
-  }, 1000);
+  }, 500);
 
   if (arrIndex === questionsArr.length - 1) {
     setTimeout(() => { 
       displayResult();
     }, 1500);
   }
+
+  clearInterval(secondsInterval);
+  clearInterval(displayQuestions);
+  time = 30;
+  manageTimer();
 }
 
 const checkAnswer = (event) => {
-  answerBtnClicked = true;
+  let rightAnswer;
 
   setTimeout(() => {
     result.className = "";
     result.textContent = "";
-  }, 1000);
+    event.target.classList.remove("btn-right-answer");
+    event.target.classList.remove("btn-wrong-answer");
+    rightAnswer.classList.remove("btn-right-answer");
+  }, 500);
 
   if (event.target.getAttribute("data-correct")) {
     result.textContent = "YES, that's it, well done!";
     result.classList.add("good-answer");
+    event.target.classList.add("btn-right-answer");
     score += 1;
     scoreDisplay.textContent = `Your score: ${score}`;
   } else {
+    for (let i = 0; i < answerBtns.length; i++) {
+      if(answerBtns[i].getAttribute("data-correct")) {
+        rightAnswer = answerBtns[i];
+      }
+    }
     result.textContent = "Nope, sorry, that's wrong";
     result.classList.add("wrong-answer");
+    event.target.classList.add("btn-wrong-answer");
+    rightAnswer.classList.add("btn-right-answer");
   }
 
   getNextQuestion(questionsArr);
-  return answerBtnClicked;
 }
 
 const displayResult = () => {
@@ -190,39 +204,32 @@ const printTime = () => {
 }
 
 const timer = () => {
-  let secondsInterval = setInterval(() => {
+  secondsInterval = setInterval(() => {
     printTime();
     time--;
-    console.log(answerBtnClicked);
-    console.log(time);
 
-    if (answerBtnClicked || time === -1) {
+    if (time === -1) {
       clearInterval(secondsInterval);
-      time = 5;
+      time = 30;
       timer();
     }
   }, 1000);
-  
-  return time;
 }
 
 const manageTimer = () => {
-  let displayQuestions;
-  if (!answerBtnClicked) {
-    displayQuestions = setInterval(() => {
+  displayQuestions = setInterval(() => {
       if (arrIndex <= questionsArr.length - 1) {
         getNextQuestion(questionsArr);
       } else {
         clearInterval(displayQuestions);
         displayResult();
       }
-    }, 5000);
-  }
+    }, 31000);
   timer(); 
 }
+
 
 // ---------------------------------------------------------------------------------------------------------------------------------
 
 // Events on quiz page
 answerBtns.forEach(btn => btn.addEventListener("click", checkAnswer));
-// answerBtns.forEach(btn => btn.addEventListener("click", () => answerBtnClicked = true));

@@ -9,5 +9,5 @@ If you'd like to test my project in your browser while it isn't online:
 - ```cd ironhack-trivia-game-project ```
 - ```open index.html``` OR ```lite-server```
 
-### Team Members
+## Team Members
 This was a solo exercice but I had a little bit of guidance from my lovely teacher and TAs!
