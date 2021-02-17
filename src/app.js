@@ -4,6 +4,8 @@ let questionsArr = [];
 let extractedQuestions;
 let arrIndex = 0;
 let score = 0;
+let time = 5;
+let answerBtnClicked = false;
 
 // DOM on quiz page
 const answerBtns = document.querySelectorAll(".answer-btn");
@@ -14,18 +16,22 @@ const difficulty = document.querySelector("#question-level");
 const questionNum = document.querySelector("#question-number");
 let scoreDisplay = document.querySelector("#score");
 let containerDiv = document.querySelector("#container");
+let timerContainer = document.querySelector("#timer");
+
 
 // ---------------------------------------------------------------------------------------------------------------------------------
 
 // Dealing with home page buttons (theme & difficulty)
 let chosenTheme, chosenDifficulty;
-const buttons = document.querySelectorAll('.theme-box button');
+const buttons = document.querySelectorAll(".theme-box button");
+const themeBtns = document.querySelectorAll(".theme-btn");
+const shuffleBtn = document.querySelector("#shuffle-btn");
+let themesArr = [];
+let difficultyArr = ["easy", "medium", "hard", null];
 
 const getBtnInfo = event => {
   chosenTheme = event.target.getAttribute("data-category");
   chosenDifficulty = event.target.getAttribute("data-level");
-  console.log(chosenTheme);
-  console.log(chosenDifficulty);
   getUrl(chosenTheme, chosenDifficulty);
   window.location.replace("./quiz.html");
 }
@@ -35,13 +41,30 @@ const getUrl = (theme, difficulty) => {
   else if (theme === null) openTriviaUrl = `https://opentdb.com/api.php?amount=5&difficulty=${difficulty}&type=multiple`;
   else if (difficulty === null) openTriviaUrl = `https://opentdb.com/api.php?amount=5&category=${theme}&type=multiple`;
   else openTriviaUrl = `https://opentdb.com/api.php?amount=5&category=${theme}&difficulty=${difficulty}&type=multiple`;
-  console.log("URL updated! yay!");
-  console.log(openTriviaUrl);
   localStorage.setItem("url", openTriviaUrl);
+  console.log(openTriviaUrl);
   return openTriviaUrl;
 }
 
-buttons.forEach(btn => btn.addEventListener('click', getBtnInfo));
+const shuffleThemes = () => {
+  let theme, shuffledTheme, shuffledDifficulty;
+
+  themeBtns.forEach(btn => {
+    if (btn.getAttribute("data-category")) {
+      theme = btn.getAttribute("data-category");
+      themesArr.push(theme);
+    }
+  });
+
+  shuffledTheme = themesArr[Math.floor(Math.random() * Math.floor(themesArr.length-1))];
+  shuffledDifficulty = difficultyArr[Math.floor(Math.random() * Math.floor(difficultyArr.length-1))];
+
+  getUrl(shuffledTheme, shuffledDifficulty);
+  window.location.replace("./quiz.html");
+}
+
+if (buttons) buttons.forEach(btn => btn.addEventListener("click", getBtnInfo));
+if (shuffleBtn) shuffleBtn.addEventListener("click", shuffleThemes);
 
 // ---------------------------------------------------------------------------------------------------------------------------------
 
@@ -56,13 +79,8 @@ const getOpenTriviaInfo = () => {
       if (arrIndex < questionsArr.length) {
         displayAnswers(questionsArr[arrIndex]);
         displayInfo(questionsArr[arrIndex]);
-      }
-      
-      // let displayQuestions = setInterval(() => {
-      //   arrIndex++;
-      //   displayAnswers(questionsArr[arrIndex]);
-      //   displayInfo(questionsArr[arrIndex]);
-      // }, 30000);
+        manageTimer();
+      } 
     })
     .catch(err => console.log(err));
 };
@@ -99,6 +117,8 @@ const displayAnswers = arr => {
 }
 
 const getNextQuestion = arr => {
+  answerBtnClicked = false;
+
   answerBtns.forEach(btn => btn.setAttribute("data-correct", ""));
 
   setTimeout(() => {
@@ -115,6 +135,8 @@ const getNextQuestion = arr => {
 }
 
 const checkAnswer = (event) => {
+  answerBtnClicked = true;
+
   setTimeout(() => {
     result.className = "";
     result.textContent = "";
@@ -131,6 +153,7 @@ const checkAnswer = (event) => {
   }
 
   getNextQuestion(questionsArr);
+  return answerBtnClicked;
 }
 
 const displayResult = () => {
@@ -159,9 +182,47 @@ const displayResult = () => {
 const reload = () => location.reload();
 
 const backToHomepage = () => location.replace("./index.html");
+
+// Timer
+const printTime = () => {
+  if (time < 10) timerContainer.textContent = `Remaining time: 0${time}`;
+  else timerContainer.textContent = `Remaining time: ${time}`;
+}
+
+const timer = () => {
+  let secondsInterval = setInterval(() => {
+    printTime();
+    time--;
+    console.log(answerBtnClicked);
+    console.log(time);
+
+    if (answerBtnClicked || time === -1) {
+      clearInterval(secondsInterval);
+      time = 5;
+      timer();
+    }
+  }, 1000);
+  
+  return time;
+}
+
+const manageTimer = () => {
+  let displayQuestions;
+  if (!answerBtnClicked) {
+    displayQuestions = setInterval(() => {
+      if (arrIndex <= questionsArr.length - 1) {
+        getNextQuestion(questionsArr);
+      } else {
+        clearInterval(displayQuestions);
+        displayResult();
+      }
+    }, 5000);
+  }
+  timer(); 
+}
+
 // ---------------------------------------------------------------------------------------------------------------------------------
 
 // Events on quiz page
-answerBtns.forEach(btn => {
-  btn.addEventListener("click", checkAnswer);
-});
+answerBtns.forEach(btn => btn.addEventListener("click", checkAnswer));
+// answerBtns.forEach(btn => btn.addEventListener("click", () => answerBtnClicked = true));
