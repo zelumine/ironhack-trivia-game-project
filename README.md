@@ -5,9 +5,9 @@ This project was made during week 3 of Ironhack's fullstack development bootcamp
 
 ## Setup
 If you'd like to test my project in your browser while it isn't online:
-- in your terminal : git clone https://github.com/zelumine/ironhack-trivia-game-project.git
-- cd ironhack-trivia-game-project
-- open index.html OR lite-server
+- in your terminal : ``` git clone https://github.com/zelumine/ironhack-trivia-game-project.git ```
+- ```cd ironhack-trivia-game-project ```
+- ```open index.html``` OR ```lite-server```
 
 ### Team Members
 This was a solo exercice but I had a little bit of guidance from my lovely teacher and TAs!
