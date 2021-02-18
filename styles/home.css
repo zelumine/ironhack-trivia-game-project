@@ -17,6 +17,7 @@ body {
 
 h1 {
   text-align: center;
+  margin-top: 20px;
 }
 
 h2 {
@@ -62,6 +63,10 @@ button {
   font-size: 0.8em;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 #shuffle, #mixed-themes {
   width: 50%;
   margin: 10px;
@@ -82,7 +87,7 @@ button {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: repeat(1fr, 5);
-  column-gap: 5px;
+  column-gap: 10px;
 }
 
 .theme-box {

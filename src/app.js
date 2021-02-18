@@ -96,9 +96,9 @@ window.addEventListener('load', () => {
 
 // Other functions for quiz page
 const displayInfo = arr => {
-  theme.textContent = `Theme: ${arr.category}`;
-  difficulty.textContent = `Difficulty: ${arr.difficulty}`;
-  questionNum.textContent = `Question ${arrIndex + 1} of ${questionsArr.length}`;
+  theme.innerHTML = `<b>Theme:</b> ${arr.category}`;
+  difficulty.innerHTML = `<b>Difficulty:</b> ${arr.difficulty}`;
+  questionNum.innerHTML = `Question ${arrIndex + 1} of ${questionsArr.length}`;
   console.log(questionsArr[arrIndex]);
 }
 
@@ -106,7 +106,7 @@ const displayAnswers = arr => {
   let index = Math.floor(Math.random() * Math.floor(answerBtns.length-1));
   let incorrectAnswersArr = [...arr.incorrect_answers];
 
-  question.innerHTML = arr.question;
+  question.innerHTML = `${arr.question}`;
   answerBtns[index].innerHTML = arr.correct_answer;
   answerBtns[index].setAttribute("data-correct", "true");
 
@@ -175,15 +175,29 @@ const displayResult = () => {
   let buttonsDiv = document.createElement("div");
   let replayBtn = document.createElement("button");
   let newGameBtn = document.createElement("button");
+  let gifImg = document.createElement("img");
 
   containerDiv.textContent = "There are no more questions! Here is your score";
+  containerDiv.classList.add("result-text");
   replayBtn.textContent = "Play again!";
   replayBtn.setAttribute("id", "replay-btn");
+  replayBtn.classList.add("answer-btn");
   newGameBtn.textContent = "Change theme";
   newGameBtn.setAttribute("id", "new-game-btn");
+  newGameBtn.classList.add("answer-btn");
 
-  finalScoreDisplay.textContent = score;
+  if (score < 3) {
+    gifImg.setAttribute("src", "https://media.giphy.com/media/S4BDGxHKIB6nW9PiyA/giphy.gif");
+  } else {
+    gifImg.setAttribute("src", "https://media.giphy.com/media/ely3apij36BJhoZ234/giphy.gif");
+  }
+
+  gifImg.classList.add("result-img");
+  finalScoreDisplay.classList.add("final-score");
+
+  finalScoreDisplay.textContent = `${score} / 20`;
   containerDiv.appendChild(finalScoreDisplay);
+  containerDiv.appendChild(gifImg);
 
   containerDiv.appendChild(buttonsDiv);
   buttonsDiv.appendChild(replayBtn);
