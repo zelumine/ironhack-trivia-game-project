@@ -4,155 +4,203 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Let's quiz ourselves</title>
+  <title>Trivia night! (or day)</title>
   <link rel="stylesheet" href="./styles/home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
 </head>
 <body>
   <h1>Trivia game (I'm trying to find a pun but right now I have nothing)</h1>
   <div id="home-container">
-    <p>Welcome! Are you feeling the need to answer all questions in the world and get smarter and/or more cultivated? Well you're at the right place, look at all those quizzes ready for you!</p>
+    <p id="intro">Welcome! Are you feeling the need to answer all questions in the world and get smarter and/or more cultivated? Well you're at the right place, look at all those quizzes ready for you!</p>
+
     <hr>
+
     <h2>Choose your quiz</h2>
-    <h3>Oh no there's too much choice, surprise me!!</h3>
-    <button id="shuffle-btn" class="theme-btn">Shuffle themes</button>
-    <br>
-    <h3>All categories</h3>
-    <div class="theme-box">
-      <button class="theme-btn">All categories</button>
-      <div>
-        <button class="difficulty" data-level="easy">Easy</button>
-        <button class="difficulty" data-level="medium">Medium</button>
-        <button class="difficulty" data-level="hard">Hard</button>  
+    <div id="themes-part-1">
+      <div id="shuffle">
+        <h3>Oh no there's too much choice...</h3>
+        <div class="theme-box">
+          <button id="shuffle-btn" class="theme-btn">Surprise me! <br> Shuffle themes</button>
+        </div>
+      </div>
+      
+      <div id="mixed-themes">
+        <h3>All categories</h3>
+        <div class="theme-box">
+          <button class="theme-btn">All categories</button>
+          <div class="level-box">
+            <button class="difficulty" data-level="easy">Easy</button>
+            <button class="difficulty" data-level="medium">Medium</button>
+            <button class="difficulty" data-level="hard">Hard</button>  
+          </div>
+        </div>
       </div>
     </div>
+
     <h3>Or choose a theme</h3>
-    <p>(all levels of difficulty mixed or choose a level)</p>
-    <div class="theme-box">
-      <button class="theme-btn" data-category="9">General knowledge</button>
-      <div>
-        <button class="difficulty" data-category="9" data-level="easy">Easy</button>
-        <button class="difficulty" data-category="9" data-level="medium">Medium</button>
-        <button class="difficulty" data-category="9" data-level="hard">Hard</button>  
+    <p>(all levels of difficulty mixed or choose a specific level)</p>
+
+    <div id="themes">
+      <div class="theme-box">
+        <button class="theme-btn" data-category="9">General knowledge</button>
+        <div class="level-box">
+          <button class="difficulty" data-category="9" data-level="easy">Easy</button>
+          <button class="difficulty" data-category="9" data-level="medium">Medium</button>
+          <button class="difficulty" data-category="9" data-level="hard">Hard</button>  
+        </div>
       </div>
-    </div>
-    <div class="theme-box">
-      <button class="theme-btn" data-category="10" >Entertainment: Books</button>
-      <div>
-        <button class="difficulty" data-category="10" data-level="easy">Easy</button>
-        <button class="difficulty" data-category="10" data-level="medium">Medium</button>
-        <button class="difficulty" data-category="10" data-level="hard">Hard</button>  
+
+      <div class="theme-box">
+        <button class="theme-btn" data-category="10" >Entertainment: Books</button>
+        <div class="level-box">
+          <button class="difficulty" data-category="10" data-level="easy">Easy</button>
+          <button class="difficulty" data-category="10" data-level="medium">Medium</button>
+          <button class="difficulty" data-category="10" data-level="hard">Hard</button>  
+        </div>
       </div>
-    </div>
-    <div class="theme-box">
-      <button class="theme-btn" data-category="11">Entertainment: Film</button>
-      <div>
-        <button class="difficulty" data-category="11" data-level="easy">Easy</button>
-        <button class="difficulty" data-category="11" data-level="medium">Medium</button>
-        <button class="difficulty" data-category="11" data-level="hard">Hard</button>  
+
+      <div class="theme-box">
+        <button class="theme-btn" data-category="11">Entertainment: Film</button>
+        <div class="level-box">
+          <button class="difficulty" data-category="11" data-level="easy">Easy</button>
+          <button class="difficulty" data-category="11" data-level="medium">Medium</button>
+          <button class="difficulty" data-category="11" data-level="hard">Hard</button>  
+        </div>
       </div>
-    </div>
-    <div class="theme-box">
-      <button class="theme-btn" data-category="12">Entertainment: Music</button>
-      <div>
-        <button class="difficulty" data-category="12" data-level="easy">Easy</button>
-        <button class="difficulty" data-category="12" data-level="medium">Medium</button>
-        <button class="difficulty" data-category="12" data-level="hard">Hard</button>  
+
+      <div class="theme-box">
+        <button class="theme-btn" data-category="12">Entertainment: Music</button>
+        <div class="level-box">
+          <button class="difficulty" data-category="12" data-level="easy">Easy</button>
+          <button class="difficulty" data-category="12" data-level="medium">Medium</button>
+          <button class="difficulty" data-category="12" data-level="hard">Hard</button>  
+        </div>
       </div>
-    </div>
-    <div class="theme-box">
-      <button class="theme-btn" data-category="14">Entertainment: Television</button>
-      <div>
-        <button class="difficulty" data-category="14" data-level="easy">Easy</button>
-        <button class="difficulty" data-category="14" data-level="medium">Medium</button>
-        <button class="difficulty" data-category="14" data-level="hard">Hard</button>  
+
+      <div class="theme-box">
+        <button class="theme-btn" data-category="13">Entertainment: Musical & theatres</button>
+        <div class="level-box">
+          <button class="difficulty" data-category="13" data-level="easy">Easy</button>
+          <button class="difficulty" data-category="13" data-level="medium">Medium</button>
+          <button class="difficulty" data-category="13" data-level="hard">Hard</button>  
+        </div>
       </div>
-    </div>
-    <div class="theme-box">
-      <button class="theme-btn" data-category="15">Entertainment: Video games</button>
-      <div>
-        <button class="difficulty" data-category="15" data-level="easy">Easy</button>
-        <button class="difficulty" data-category="15" data-level="medium">Medium</button>
-        <button class="difficulty" data-category="15" data-level="hard">Hard</button>  
+
+      <div class="theme-box">
+        <button class="theme-btn" data-category="14">Entertainment: Television</button>
+        <div class="level-box">
+          <button class="difficulty" data-category="14" data-level="easy">Easy</button>
+          <button class="difficulty" data-category="14" data-level="medium">Medium</button>
+          <button class="difficulty" data-category="14" data-level="hard">Hard</button>  
+        </div>
       </div>
-    </div>
-    <div class="theme-box">
-      <button class="theme-btn" data-category="16">Entertainment: Board games</button>
-      <div>
-        <button class="difficulty" data-category="16" data-level="easy">Easy</button>
-        <button class="difficulty" data-category="16" data-level="medium">Medium</button>
-        <button class="difficulty" data-category="16" data-level="hard">Hard</button>  
+
+      <div class="theme-box">
+        <button class="theme-btn" data-category="15">Entertainment: Video games</button>
+        <div class="level-box">
+          <button class="difficulty" data-category="15" data-level="easy">Easy</button>
+          <button class="difficulty" data-category="15" data-level="medium">Medium</button>
+          <button class="difficulty" data-category="15" data-level="hard">Hard</button>  
+        </div>
       </div>
-    </div>
-    <div class="theme-box">
-      <button class="theme-btn" data-category="17">Science & nature</button>
-      <div>
-        <button class="difficulty" data-category="17" data-level="easy">Easy</button>
-        <button class="difficulty" data-category="17" data-level="medium">Medium</button>
-        <button class="difficulty" data-category="17" data-level="hard">Hard</button>  
+
+      <div class="theme-box">
+        <button class="theme-btn" data-category="16">Entertainment: Board games</button>
+        <div class="level-box">
+          <button class="difficulty" data-category="16" data-level="easy">Easy</button>
+          <button class="difficulty" data-category="16" data-level="medium">Medium</button>
+          <button class="difficulty" data-category="16" data-level="hard">Hard</button>  
+        </div>
       </div>
-    </div>
-    <div class="theme-box">
-      <button class="theme-btn" data-category="20">Mythology</button>
-      <div>
-        <button class="difficulty" data-category="20" data-level="easy">Easy</button>
-        <button class="difficulty" data-category="20" data-level="medium">Medium</button>
-        <button class="difficulty" data-category="20" data-level="hard">Hard</button>  
+
+      <div class="theme-box">
+        <button class="theme-btn" data-category="17">Science & nature</button>
+        <div class="level-box">
+          <button class="difficulty" data-category="17" data-level="easy">Easy</button>
+          <button class="difficulty" data-category="17" data-level="medium">Medium</button>
+          <button class="difficulty" data-category="17" data-level="hard">Hard</button>  
+        </div>
       </div>
-    </div>
-    <div class="theme-box">
-      <button class="theme-btn" data-category="22">Geography</button>
-      <div>
-        <button class="difficulty" data-category="22" data-level="easy">Easy</button>
-        <button class="difficulty" data-category="22" data-level="medium">Medium</button>
-        <button class="difficulty" data-category="22" data-level="hard">Hard</button>  
+
+      <div class="theme-box">
+        <button class="theme-btn" data-category="18">Science: Computers </button>
+        <div class="level-box">
+          <button class="difficulty" data-category="18" data-level="easy">Easy</button>
+          <button class="difficulty" data-category="18" data-level="medium">Medium</button>
+          <button class="difficulty" data-category="18" data-level="hard">Hard</button>  
+        </div>
       </div>
-    </div>
-    <div class="theme-box">
-      <button class="theme-btn" data-category="23">History</button>
-      <div>
-        <button class="difficulty" data-category="23" data-level="easy">Easy</button>
-        <button class="difficulty" data-category="23" data-level="medium">Medium</button>
-        <button class="difficulty" data-category="23" data-level="hard">Hard</button>  
+
+      <div class="theme-box">
+        <button class="theme-btn" data-category="20">Mythology</button>
+        <div class="level-box">
+          <button class="difficulty" data-category="20" data-level="easy">Easy</button>
+          <button class="difficulty" data-category="20" data-level="medium">Medium</button>
+          <button class="difficulty" data-category="20" data-level="hard">Hard</button>  
+        </div>
       </div>
-    </div>
-    <div class="theme-box">
-      <button class="theme-btn" data-category="25">Art</button>
-      <div>
-        <button class="difficulty" data-category="25" data-level="easy">Easy</button>
-        <button class="difficulty" data-category="25" data-level="medium">Medium</button>
-        <button class="difficulty" data-category="25" data-level="hard">Hard</button>  
+
+      <div class="theme-box">
+        <button class="theme-btn" data-category="22">Geography</button>
+        <div class="level-box">
+          <button class="difficulty" data-category="22" data-level="easy">Easy</button>
+          <button class="difficulty" data-category="22" data-level="medium">Medium</button>
+          <button class="difficulty" data-category="22" data-level="hard">Hard</button>  
+        </div>
       </div>
-    </div>
-    <div class="theme-box">
-      <button class="theme-btn" data-category="27">Animals</button>
-      <div>
-        <button class="difficulty" data-category="27" data-level="easy">Easy</button>
-        <button class="difficulty" data-category="27" data-level="medium">Medium</button>
-        <button class="difficulty" data-category="27" data-level="hard">Hard</button>  
+
+      <div class="theme-box">
+        <button class="theme-btn" data-category="23">History</button>
+        <div class="level-box">
+          <button class="difficulty" data-category="23" data-level="easy">Easy</button>
+          <button class="difficulty" data-category="23" data-level="medium">Medium</button>
+          <button class="difficulty" data-category="23" data-level="hard">Hard</button>  
+        </div>
       </div>
-    </div>
-    <div class="theme-box">
-      <button class="theme-btn" data-category="29">Entertainment: Comics</button>
-      <div>
-        <button class="difficulty" data-category="29" data-level="easy">Easy</button>
-        <button class="difficulty" data-category="29" data-level="medium">Medium</button>
-        <button class="difficulty" data-category="29" data-level="hard">Hard</button>  
+
+      <div class="theme-box">
+        <button class="theme-btn" data-category="25">Art</button>
+        <div class="level-box">
+          <button class="difficulty" data-category="25" data-level="easy">Easy</button>
+          <button class="difficulty" data-category="25" data-level="medium">Medium</button>
+          <button class="difficulty" data-category="25" data-level="hard">Hard</button>  
+        </div>
       </div>
-    </div>
-    <div class="theme-box">
-      <button class="theme-btn" data-category="31">Entertainment: Japanese anime & manga</button>
-      <div>
-        <button class="difficulty" data-category="31" data-level="easy">Easy</button>
-        <button class="difficulty" data-category="31" data-level="medium">Medium</button>
-        <button class="difficulty" data-category="31" data-level="hard">Hard</button>  
+
+      <div class="theme-box">
+        <button class="theme-btn" data-category="27">Animals</button>
+        <div class="level-box">
+          <button class="difficulty" data-category="27" data-level="easy">Easy</button>
+          <button class="difficulty" data-category="27" data-level="medium">Medium</button>
+          <button class="difficulty" data-category="27" data-level="hard">Hard</button>  
+        </div>
       </div>
-    </div>
-    <div class="theme-box">
-      <button class="theme-btn" data-category="32">Entertainment: Cartoon & animation</button>
-      <div>
-        <button class="difficulty" data-category="32" data-level="easy">Easy</button>
-        <button class="difficulty" data-category="32" data-level="medium">Medium</button>
-        <button class="difficulty" data-category="32" data-level="hard">Hard</button>  
+
+      <div class="theme-box">
+        <button class="theme-btn" data-category="29">Entertainment: Comics</button>
+        <div class="level-box">
+          <button class="difficulty" data-category="29" data-level="easy">Easy</button>
+          <button class="difficulty" data-category="29" data-level="medium">Medium</button>
+          <button class="difficulty" data-category="29" data-level="hard">Hard</button>  
+        </div>
+      </div>
+
+      <div class="theme-box">
+        <button class="theme-btn" data-category="31">Entertainment: Japanese anime & manga</button>
+        <div class="level-box">
+          <button class="difficulty" data-category="31" data-level="easy">Easy</button>
+          <button class="difficulty" data-category="31" data-level="medium">Medium</button>
+          <button class="difficulty" data-category="31" data-level="hard">Hard</button>  
+        </div>
+      </div>
+
+      <div class="theme-box">
+        <button class="theme-btn" data-category="32">Entertainment: Cartoon & animation</button>
+        <div class="level-box">
+          <button class="difficulty" data-category="32" data-level="easy">Easy</button>
+          <button class="difficulty" data-category="32" data-level="medium">Medium</button>
+          <button class="difficulty" data-category="32" data-level="hard">Hard</button>  
+        </div>
       </div>
     </div>
   </div>
