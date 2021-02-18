@@ -129,7 +129,7 @@ const getNextQuestion = arr => {
   if (arrIndex === questionsArr.length - 1) {
     setTimeout(() => { 
       displayResult();
-    }, 1500);
+    }, 500);
   }
 
   clearInterval(secondsInterval);
@@ -177,7 +177,7 @@ const displayResult = () => {
   let newGameBtn = document.createElement("button");
   let gifImg = document.createElement("img");
 
-  containerDiv.textContent = "There are no more questions! Here is your score";
+  containerDiv.textContent = "There are no more questions! Here is your score:";
   containerDiv.classList.add("result-text");
   replayBtn.textContent = "Play again!";
   replayBtn.setAttribute("id", "replay-btn");
