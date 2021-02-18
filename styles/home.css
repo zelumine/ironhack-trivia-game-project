@@ -143,60 +143,6 @@ button.difficulty {
 }
 
 /* Media queries */
-@media(min-width: 480px) {
-  body {
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  #intro {
-    font-size: 1.1em;
-    width: 50%;
-    margin: 15px auto;
-    text-align: center;
-  }
-
-  #home-container {
-    width: 80%;
-    margin: auto;
-  }
-
-  #shuffle-btn {
-    margin: auto;
-  }
-
-  #shuffle, #mixed-themes {
-    width: 50%;
-    margin: 10px;
-  }
-
-  #themes-part-1 {
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-self: center;
-  }
-
-  #themes {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: repeat(1fr, 5);
-    column-gap: 10px;
-  }
-
-  .theme-box {
-    margin: 15px 0;
-    border: 1px solid lightslategray;
-    border-radius: 5px;
-    min-width: 100%;
-    height: 120px;
-    font-size: 1.2em;
-    display: flex;
-    flex-direction: column;
-  }
-}
-
 @media(min-width: 480px) and (max-width: 768px) {
   #intro {
     width: 90%;
@@ -233,5 +179,61 @@ button.difficulty {
 
   .theme-box {
     padding: 10px;
+  }
+}
+
+@media(min-width: 769px) {
+  body {
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  #intro {
+    font-size: 1.1em;
+    width: 50%;
+    margin: 15px auto;
+    text-align: center;
+  }
+
+  #home-container {
+    width: 80%;
+    margin: auto;
+  }
+
+  #shuffle-btn {
+    margin: auto;
+    width: 250px;
+    height: 90px;
+  }
+
+  #shuffle, #mixed-themes {
+    width: 50%;
+    margin: 10px;
+  }
+
+  #themes-part-1 {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-self: center;
+  }
+
+  #themes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(1fr, 5);
+    column-gap: 10px;
+  }
+
+  .theme-box {
+    margin: 15px 0;
+    border: 1px solid lightslategray;
+    border-radius: 5px;
+    min-width: 100%;
+    height: 120px;
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
   }
 }
