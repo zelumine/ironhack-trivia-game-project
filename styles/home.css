@@ -215,6 +215,11 @@ button.difficulty {
     align-self: center;
   }
 
+  #shuffle-btn {
+    padding: 5px;
+    height: 90px;
+  }
+
   #mixed-themes .theme-box {
     margin-top: 37px;
   }
